@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:heroicons_flutter/heroicons_flutter.dart';
+import 'package:kakaninai/widgets/app_name_text.dart';
 import '../widgets/search_delegate.dart';
 import '../widgets/kakanin_widgets.dart';
-import '../consts/app_colors.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -15,17 +16,11 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('KakaninAI'),
-        titleTextStyle: const TextStyle(
-          fontSize: 23,
-          color: AppColors.customOrange,
-          fontWeight: FontWeight.bold,
-          letterSpacing: 1.2,
-        ),
+        title: const AppNameTextWidget(),
         centerTitle: true,
         actions: [
           IconButton(
-            icon: const Icon(Icons.search),
+            icon: const Icon(HeroiconsSolid.magnifyingGlass),
             onPressed: () {
               showSearch(context: context, delegate: MySearchDelegate());
             },

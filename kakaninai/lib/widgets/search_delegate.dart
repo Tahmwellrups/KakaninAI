@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:heroicons_flutter/heroicons_flutter.dart';
 
 class MySearchDelegate extends SearchDelegate<String> {
   final List<String> _kakaninList = ['Bibingka', 'Puto', 'Biko', 'Suman'];
@@ -7,7 +8,7 @@ class MySearchDelegate extends SearchDelegate<String> {
   List<Widget> buildActions(BuildContext context) {
     return [
       IconButton(
-        icon: const Icon(Icons.clear),
+        icon: const Icon(HeroiconsSolid.xMark),
         onPressed: () {
           query = '';
         },
@@ -18,7 +19,7 @@ class MySearchDelegate extends SearchDelegate<String> {
   @override
   Widget buildLeading(BuildContext context) {
     return IconButton(
-      icon: const Icon(Icons.arrow_back),
+      icon: const Icon(HeroiconsSolid.arrowLeft),
       onPressed: () {
         close(context, '');
       },
@@ -27,13 +28,17 @@ class MySearchDelegate extends SearchDelegate<String> {
 
   @override
   Widget buildResults(BuildContext context) {
-    final results = _kakaninList.where((kakanin) => kakanin.toLowerCase().contains(query.toLowerCase())).toList();
+    final results = _kakaninList
+        .where((kakanin) => kakanin.toLowerCase().contains(query.toLowerCase()))
+        .toList();
     return _buildList(results);
   }
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    final suggestions = _kakaninList.where((kakanin) => kakanin.toLowerCase().contains(query.toLowerCase())).toList();
+    final suggestions = _kakaninList
+        .where((kakanin) => kakanin.toLowerCase().contains(query.toLowerCase()))
+        .toList();
     return _buildList(suggestions);
   }
 

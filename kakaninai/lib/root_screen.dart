@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:heroicons_flutter/heroicons_flutter.dart';
 import 'screens/home_screen.dart';
-import 'screens/catalogue_screen.dart';
+import 'screens/discover_screen.dart';
 import 'screens/regions_screen.dart';
 import 'screens/more_screen.dart';
 // import 'consts/app_colors.dart';
@@ -18,7 +18,7 @@ class _RootScreenState extends State<RootScreen> {
   int currentScreen = 0;
   List<Widget> screens = [
     const HomeScreen(),
-    const CatalogueScreen(),
+    const DiscoverScreen(),
     const RegionsScreen(),
     const MoreScreen(),
   ];
@@ -44,6 +44,8 @@ class _RootScreenState extends State<RootScreen> {
       bottomNavigationBar: NavigationBar(
         selectedIndex: currentScreen,
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        height: kBottomNavigationBarHeight,
+        elevation: 5,
         onDestinationSelected: (value) {
           setState(() {
             currentScreen = value;
@@ -57,9 +59,9 @@ class _RootScreenState extends State<RootScreen> {
             label: 'Home',
           ),
           NavigationDestination(
-            selectedIcon: Icon(HeroiconsSolid.listBullet), // Selected icon
-            icon: Icon(HeroiconsOutline.listBullet), // Default icon
-            label: 'Catalogue',
+            selectedIcon: Icon(HeroiconsSolid.magnifyingGlass), // Selected icon
+            icon: Icon(HeroiconsOutline.magnifyingGlass), // Default icon
+            label: 'Discover',
           ),
           NavigationDestination(
             selectedIcon: Icon(HeroiconsSolid.map), // Selected icon
@@ -67,9 +69,9 @@ class _RootScreenState extends State<RootScreen> {
             label: 'Regions',
           ),
           NavigationDestination(
-            selectedIcon: Icon(HeroiconsSolid.cog6Tooth), // Selected icon
-            icon: Icon(HeroiconsOutline.cog6Tooth), // Default icon
-            label: 'Settings',
+            selectedIcon: Icon(HeroiconsSolid.ellipsisHorizontalCircle), // Selected icon
+            icon: Icon(HeroiconsOutline.ellipsisHorizontalCircle), // Default icon
+            label: 'More',
           ),
         ],
       ),
