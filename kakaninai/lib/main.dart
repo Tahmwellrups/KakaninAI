@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         builder: (context, themeProvider, child) {
           return MaterialApp(
             debugShowCheckedModeBanner: false, 
-            title: 'Kakaninai',
+            title: 'KakaninAI',
             theme: Styles.themeData(
               isDarkTheme: themeProvider.darkTheme, context: context),
             home: const RootScreen(),
