@@ -15,6 +15,7 @@ class RegionsScreen extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(HeroiconsSolid.magnifyingGlass),
+            padding: const EdgeInsets.only(right: 16.0),
             onPressed: () {
               showSearch(context: context, delegate: MySearchDelegate());
             },

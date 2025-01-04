@@ -12,30 +12,30 @@ class MoreScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
     return Scaffold(
-      appBar: AppBar(
-        title: const AppNameTextWidget(),
-        centerTitle: true,
-        actions: [
-          IconButton(
-            icon: const Icon(HeroiconsSolid.magnifyingGlass),
-            onPressed: () {
-              showSearch(context: context, delegate: MySearchDelegate());
-            },
-          ),
-        ],
-      ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          SwitchListTile(
-            title: Text(themeProvider.darkTheme ? 'Dark Mode' : 'Light Mode'),
-            value: themeProvider.darkTheme,
-            onChanged: (value) {
-              themeProvider.setDarkTheme(themevalue: value);
-            },
-          )
-        ],
-      )
-    );
+        appBar: AppBar(
+          title: const AppNameTextWidget(),
+          centerTitle: true,
+          actions: [
+            IconButton(
+              icon: const Icon(HeroiconsSolid.magnifyingGlass),
+              padding: const EdgeInsets.only(right: 16.0),
+              onPressed: () {
+                showSearch(context: context, delegate: MySearchDelegate());
+              },
+            ),
+          ],
+        ),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SwitchListTile(
+              title: Text(themeProvider.darkTheme ? 'Dark Mode' : 'Light Mode'),
+              value: themeProvider.darkTheme,
+              onChanged: (value) {
+                themeProvider.setDarkTheme(themevalue: value);
+              },
+            )
+          ],
+        ));
   }
 }

@@ -4,13 +4,12 @@ import 'package:flutter/material.dart';
 class KakaninWidget extends StatelessWidget {
   final String imageUrl;
   final String name;
-  final double price; 
+  // final double price; 
 
   const KakaninWidget({
     super.key,
     required this.imageUrl,
     required this.name,
-    required this.price,
   });
 
   @override
@@ -56,13 +55,13 @@ class KakaninWidget extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 4),
-                  Text(
-                    '₱${price.toStringAsFixed(2)}',
-                    style: const TextStyle(
-                      fontSize: 12,
-                      color: Colors.green,
-                    ),
-                  ),
+                  // Text(
+                  //   '₱${price.toStringAsFixed(2)}',
+                  //   style: const TextStyle(
+                  //     fontSize: 12,
+                  //     color: Colors.green,
+                  //   ),
+                  // ),
                 ],
               ),
             ),

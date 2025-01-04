@@ -20,17 +20,17 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
     {
       'imageUrl': AppConstants.productImageUrl,
       'name': 'Bibingka',
-      'price': 120.00,
+      // 'price': 120.00,
     },
     {
       'imageUrl': AppConstants.productImageUrl,
       'name': 'Puto Bumbong',
-      'price': 100.00,
+      // 'price': 100.00,
     },
     {
       'imageUrl': AppConstants.productImageUrl,
       'name': 'Kutsinta',
-      'price': 50.00,
+      // 'price': 50.00,
     },
     // Add more entries as needed
   ];
@@ -50,6 +50,7 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
       child: Scaffold(
         appBar: AppBar(
           title: const AppNameTextWidget(),
+          backgroundColor: Colors.white,
           centerTitle: true,
         ),
         body: Padding(
@@ -79,7 +80,8 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
                     borderRadius: BorderRadius.circular(8),
                   ),
                 ),
-                onFieldSubmitted: (value) { // Add search functionality here
+                onFieldSubmitted: (value) {
+                  // Add search functionality here
                   print(searchController.text);
                 },
               ),
@@ -100,7 +102,7 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
                     return KakaninWidget(
                       imageUrl: kakanin['imageUrl'],
                       name: kakanin['name'],
-                      price: kakanin['price'],
+                      // price: kakanin['price'],
                     );
                   },
                   itemCount: kakaninList.length,
