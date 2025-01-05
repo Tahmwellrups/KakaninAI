@@ -9,11 +9,10 @@ class TitleTextWidget extends StatelessWidget {
   final TextDecoration textDecoration;
   final int? maxLines;
 
-
   const TitleTextWidget({
     super.key,
     required this.label,
-    this.fontSize = 20,
+    this.fontSize = kDefaultFontSize,
     this.fontStyle = FontStyle.normal,
     this.fontWeight = FontWeight.normal,
     this.color,

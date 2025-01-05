@@ -69,8 +69,10 @@ class _RootScreenState extends State<RootScreen> {
             label: 'Regions',
           ),
           NavigationDestination(
-            selectedIcon: Icon(HeroiconsSolid.ellipsisHorizontalCircle), // Selected icon
-            icon: Icon(HeroiconsOutline.ellipsisHorizontalCircle), // Default icon
+            selectedIcon:
+                Icon(HeroiconsSolid.ellipsisHorizontalCircle), // Selected icon
+            icon:
+                Icon(HeroiconsOutline.ellipsisHorizontalCircle), // Default icon
             label: 'More',
           ),
         ],

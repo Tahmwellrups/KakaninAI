@@ -14,7 +14,6 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: const AppNameTextWidget(),
         centerTitle: true,
-        backgroundColor: Colors.white,
         actions: [
           IconButton(
             icon: const Icon(HeroiconsSolid.magnifyingGlass),
