@@ -2,59 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:kakaninai/widgets/titles_text.dart';
 
 class KakaninDetails extends StatelessWidget {
-  final String region;
-  final String province;
-  final String municipality;
-  final String kakaninClass;
-  final String kakanin;
-  final String geographicalLocation;
-  final String summary;
-  final String culturalBearer;
-  final String modeOfTransmission;
-  final String csHistory;
-  final String csAesthetic;
-  final String csCultural;
-  final String csSocial;
-  final String csSpiritual;
-  final String csScientific;
-  final String csSocioEconomic;
-  final String csSocioPolitical;
-  final String csEconomic;
-  final String status;
-  final String constraints;
-  final String safeguardingMeasures;
-  final String stories;
-  final String ingredients;
-  final String procedure;
-  final String image;
+  final Map<String, String> kakanin;
 
   const KakaninDetails({
     super.key,
-    required this.region,
-    required this.province,
-    required this.municipality,
-    required this.kakaninClass,
     required this.kakanin,
-    required this.geographicalLocation,
-    required this.summary,
-    required this.culturalBearer,
-    required this.modeOfTransmission,
-    required this.csHistory,
-    required this.csAesthetic,
-    required this.csCultural,
-    required this.csSocial,
-    required this.csSpiritual,
-    required this.csScientific,
-    required this.csSocioEconomic,
-    required this.csSocioPolitical,
-    required this.csEconomic,
-    required this.status,
-    required this.constraints,
-    required this.safeguardingMeasures,
-    required this.stories,
-    required this.ingredients,
-    required this.procedure,
-    required this.image,
   });
 
   @override
@@ -63,7 +15,7 @@ class KakaninDetails extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(kakanin),
+        title: Text(kakanin['kakanin_name']!),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -76,7 +28,7 @@ class KakaninDetails extends StatelessWidget {
               ClipRRect(
                 borderRadius: BorderRadius.circular(16),
                 child: Image.network(
-                  image,
+                  kakanin['image']!,
                   height: size.height * 0.3,
                   width: double.infinity,
                   fit: BoxFit.cover,
@@ -85,7 +37,7 @@ class KakaninDetails extends StatelessWidget {
               const SizedBox(height: 16),
               // Kakanin Name
               Text(
-                kakanin,
+                kakanin['kakanin_name']!,
                 style: const TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
@@ -94,7 +46,7 @@ class KakaninDetails extends StatelessWidget {
               const SizedBox(height: 8),
               // Origin
               Text(
-                '$municipality, $province',
+                '${kakanin['municipality']}, ${kakanin['province']}',
                 style: const TextStyle(
                   fontSize: 16,
                   color: Colors.grey,
@@ -103,7 +55,7 @@ class KakaninDetails extends StatelessWidget {
               const SizedBox(height: 16),
               // Description
               Text(
-                summary,
+                kakanin['summary']!,
                 textAlign: TextAlign.justify,
                 style: const TextStyle(
                   fontSize: 16,
@@ -117,7 +69,7 @@ class KakaninDetails extends StatelessWidget {
               ),
               const SizedBox(height: 8),
               Text(
-                ingredients,
+                kakanin['ingredients']!,
                 textAlign: TextAlign.justify,
                 style: const TextStyle(
                   fontSize: 16,
@@ -131,7 +83,7 @@ class KakaninDetails extends StatelessWidget {
               ),
               const SizedBox(height: 8),
               Text(
-                procedure,
+                kakanin['procedure']!,
                 textAlign: TextAlign.justify,
                 style: const TextStyle(
                   fontSize: 16,
@@ -151,31 +103,31 @@ class KakaninDetails extends StatelessWidget {
                 children: [
                   ListTile(
                     title: const Text('Geographical Location'),
-                    subtitle: Text(geographicalLocation),
+                    subtitle: Text(kakanin['geographical_location']!),
                   ),
                   ListTile(
                     title: const Text('Cultural Bearer'),
-                    subtitle: Text(culturalBearer),
+                    subtitle: Text(kakanin['cultural_bearer']!),
                   ),
                   ListTile(
                     title: const Text('Mode of Transmission'),
-                    subtitle: Text(modeOfTransmission),
+                    subtitle: Text(kakanin['mode_of_transmission']!),
                   ),
                   ListTile(
                     title: const Text('Cultural Significance (History)'),
-                    subtitle: Text(csHistory),
+                    subtitle: Text(kakanin['cs_history']!),
                   ),
                   ListTile(
                     title: const Text('Aesthetic Value'),
-                    subtitle: Text(csAesthetic),
+                    subtitle: Text(kakanin['cs_aesthetic']!),
                   ),
                   ListTile(
                     title: const Text('Social Significance'),
-                    subtitle: Text(csSocial),
+                    subtitle: Text(kakanin['cs_social']!),
                   ),
                   ListTile(
                     title: const Text('Spiritual Value'),
-                    subtitle: Text(csSpiritual),
+                    subtitle: Text(kakanin['cs_spiritual']!),
                   ),
                 ],
               ),

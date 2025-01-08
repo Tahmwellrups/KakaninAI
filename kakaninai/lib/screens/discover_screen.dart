@@ -1,6 +1,5 @@
 import 'package:dynamic_height_grid_view/dynamic_height_grid_view.dart';
 import 'package:flutter/material.dart';
-import 'package:kakaninai/consts/app_constants.dart';
 import 'package:kakaninai/widgets/app_name_text.dart';
 import 'package:kakaninai/widgets/kakanin/kakanin_widget.dart';
 import 'package:kakaninai/widgets/titles_text.dart';
@@ -16,13 +15,13 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
   late TextEditingController searchController;
 
   // Sample data for kakanin
-  final List<Map<String, dynamic>> kakaninList = [
+  final List<Map<String, String>> kakaninList = [
     {
       'region': 'Cordillera Administrative Region',
       'province': 'Kalinga',
       'municipality': 'Lubuagan',
       'kakanin_class': 'Suman',
-      'kakanin': 'Ilanchila',
+      'kakanin_name': 'Ilanchila',
       'geographical_location':
           'Whole municipality of Lubuagan and the rest of the municipalities of the province of Kalinga',
       'summary':
@@ -121,33 +120,8 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
                 child: DynamicHeightGridView(
                   crossAxisCount: 2,
                   builder: (context, index) {
-                    final kakanin = kakaninList[index];
                     return KakaninWidget(
-                      region: kakanin['region'],
-                      province: kakanin['province'],
-                      municipality: kakanin['municipality'],
-                      kakaninClass: kakanin['kakanin_class'],
-                      kakanin: kakanin['kakanin'],
-                      geographicalLocation: kakanin['geographical_location'],
-                      summary: kakanin['summary'],
-                      culturalBearer: kakanin['cultural_bearer'],
-                      modeOfTransmission: kakanin['mode_of_transmission'],
-                      csHistory: kakanin['cs_history'],
-                      csAesthetic: kakanin['cs_aesthetic'],
-                      csCultural: kakanin['cs_cultural'],
-                      csSocial: kakanin['cs_social'],
-                      csSpiritual: kakanin['cs_spiritual'],
-                      csScientific: kakanin['cs_scientific'],
-                      csSocioEconomic: kakanin['cs_socioEconomic'],
-                      csSocioPolitical: kakanin['cs_socioPolitical'],
-                      csEconomic: kakanin['cs_economic'],
-                      status: kakanin['status'],
-                      constraints: kakanin['constraints'],
-                      safeguardingMeasures: kakanin['safeguarding_measures'],
-                      stories: kakanin['stories'],
-                      ingredients: kakanin['ingredients'],
-                      procedure: kakanin['procedure'],
-                      image: kakanin['image'],
+                      kakanin: kakaninList[index],
                     );
                   },
                   itemCount: kakaninList.length,

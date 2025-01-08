@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:heroicons_flutter/heroicons_flutter.dart';
 import 'package:kakaninai/consts/app_constants.dart';
 import 'package:kakaninai/widgets/app_name_text.dart';
-import 'package:kakaninai/widgets/kakanin_widgets.dart';
+import 'package:kakaninai/widgets/header_widget.dart';
 import 'package:kakaninai/widgets/search_delegate.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -30,7 +30,7 @@ class HomeScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Header
-            buildHeader(),
+            buildHeader(context),
             const SizedBox(height: 8),
             // Search Bar
             // TextField(
