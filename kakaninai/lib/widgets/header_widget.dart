@@ -28,7 +28,7 @@ Widget buildHeader(BuildContext context) {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const ResultScreen(),
+                  builder: (context) => ResultScreen(),
                 ),
               );
             },
