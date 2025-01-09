@@ -20,24 +20,28 @@ class RegionWidget extends StatelessWidget {
       child: ListTile(
         leading: ClipRRect(
           borderRadius: BorderRadius.circular(8.0),
-          child: Image.network(
+          child: Image.asset(
             region['image']!,
+            // 'images/region_images/ncr-1.png',
+            // 'https://via.placeholder.com/150',
             width: 50,
             height: 50,
             fit: BoxFit.cover,
-            loadingBuilder: (context, child, loadingProgress) {
-              if (loadingProgress == null) return child;
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            },
-            errorBuilder: (context, error, stackTrace) {
-              return const Icon(
-                Icons.broken_image,
-                size: 50,
-                color: Colors.grey,
-              );
-            },
+            color: const Color.fromARGB(255, 247, 242, 250),
+            colorBlendMode: BlendMode.multiply,
+            // loadingBuilder: (context, child, loadingProgress) {
+            //   if (loadingProgress == null) return child;
+            //   return const Center(
+            //     child: CircularProgressIndicator(),
+            //   );
+            // },
+            // errorBuilder: (context, error, stackTrace) {
+            //   return const Icon(
+            //     Icons.broken_image,
+            //     size: 50,
+            //     color: Colors.grey,
+            //   );
+            // },
           ),
         ),
         title: Text(

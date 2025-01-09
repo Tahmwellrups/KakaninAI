@@ -1,15 +1,77 @@
 import 'package:flutter/material.dart';
 
-class RegionDetails extends StatelessWidget {
+// SQL package
+import 'package:sqflite/sqflite.dart';
+import 'package:path/path.dart';
+import 'package:flutter/services.dart' show rootBundle;
+import 'dart:io';
+
+Future<Database> initializeDatabase() async {
+  // Get the path to the database directory
+  final databasePath = await getDatabasesPath();
+  final path = join(databasePath, 'kakaninpedia.db');
+
+  // Check if the database already exists
+  // final exists = await databaseExists(path);
+
+  // if (!exists) {
+  //   // Copy the database from assets to the writable location
+  //   try {
+  //     final data = await rootBundle.load('assets/kakaninpedia.db');
+  //     final bytes =
+  //         data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
+
+  //     // Write the database file
+  //     await File(path).writeAsBytes(bytes, flush: true);
+  //     print("Database copied to $path");
+  //   } catch (e) {
+  //     throw Exception("Error copying database: $e");
+  //   }
+  // } else {
+  //   print("Database already exists at $path");
+  // }
+
+  // Open the database
+  return openDatabase(path);
+}
+
+class RegionDetails extends StatefulWidget {
   final Map<String, dynamic> region;
 
   const RegionDetails({super.key, required this.region});
 
   @override
+  State<RegionDetails> createState() => _RegionDetailsState();
+}
+
+class _RegionDetailsState extends State<RegionDetails> {
+  List<Map<String, dynamic>> data = [];
+
+  @override
+  void initState() {
+    super.initState();
+    fetchDataFromDatabase();
+  }
+
+  Future<List<Map<String, dynamic>>> fetchData() async {
+    final db = await initializeDatabase();
+    return await db.rawQuery('''
+      SELECT kakanin_id, kakanin_name FROM kakanin 
+      WHERE region_id = ?''', [widget.region['region_id']]);
+  }
+
+  Future<void> fetchDataFromDatabase() async {
+    final dbData = await fetchData(); // Call your fetchData function
+    setState(() {
+      data = dbData;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(region['region_name']!),
+        title: Text(widget.region['region_name']!),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -17,10 +79,11 @@ class RegionDetails extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              region['region_name']!,
+              widget.region['region_name']!,
               style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 16),
+            for (var item in data) Text(item['kakanin_name']),
           ],
         ),
       ),
