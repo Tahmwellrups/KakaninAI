@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:kakaninai/screens/inner_screens/kakanin_details.dart';
 
 // SQL package
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
-import 'package:flutter/services.dart' show rootBundle;
-import 'dart:io';
 
 Future<Database> initializeDatabase() async {
   // Get the path to the database directory
@@ -84,6 +83,66 @@ class _RegionDetailsState extends State<RegionDetails> {
             ),
             const SizedBox(height: 16),
             for (var item in data) Text(item['kakanin_name']),
+            ListView.builder(
+              itemCount: data.length,
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              itemBuilder: (context, index) {
+                final region = data[index];
+                return Card(
+                    margin: const EdgeInsets.symmetric(
+                        vertical: 8.0, horizontal: 16.0),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12.0),
+                    ),
+                    elevation: 4.0,
+                    child: GestureDetector(
+                      // onTap: () {
+                      //   Navigator.push(
+                      //     context,
+                      //     MaterialPageRoute(
+                      //       builder: (context) => KakaninDetails(kakanin: region),
+                      //     ),
+                      //   );
+                      // },
+                      child: ListTile(
+                        leading: ClipRRect(
+                          borderRadius: BorderRadius.circular(8.0),
+                          child: Image.asset(
+                            region['image']!,
+                            // 'images/region_images/ncr-1.png',
+                            // 'https://via.placeholder.com/150',
+                            width: 50,
+                            height: 50,
+                            fit: BoxFit.cover,
+                            color: const Color.fromARGB(255, 247, 242, 250),
+                            colorBlendMode: BlendMode.multiply,
+                            // loadingBuilder: (context, child, loadingProgress) {
+                            //   if (loadingProgress == null) return child;
+                            //   return const Center(
+                            //     child: CircularProgressIndicator(),
+                            //   );
+                            // },
+                            // errorBuilder: (context, error, stackTrace) {
+                            //   return const Icon(
+                            //     Icons.broken_image,
+                            //     size: 50,
+                            //     color: Colors.grey,
+                            //   );
+                            // },
+                          ),
+                        ),
+                        title: Text(
+                          data, // FIX THIS
+                          style: const TextStyle(
+                            fontSize: 16.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        trailing: const Icon(Icons.arrow_forward_ios),
+                      ),
+                    ));
+              },
+            ),
           ],
         ),
       ),

@@ -18,22 +18,22 @@ Future<Database> initializeDatabase() async {
   // Check if the database already exists
   final exists = await databaseExists(path);
 
-  if (!exists) {
-    // Copy the database from assets to the writable location
-    try {
-      final data = await rootBundle.load('assets/kakaninpedia.db');
-      final bytes =
-          data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
+  // if (!exists) {
+  // Copy the database from assets to the writable location
+  try {
+    final data = await rootBundle.load('assets/kakaninpedia.db');
+    final bytes =
+        data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
 
-      // Write the database file
-      await File(path).writeAsBytes(bytes, flush: true);
-      print("Database copied to $path");
-    } catch (e) {
-      throw Exception("Error copying database: $e");
-    }
-  } else {
-    print("Database already exists at $path");
+    // Write the database file
+    await File(path).writeAsBytes(bytes, flush: true);
+    print("Database copied to $path");
+  } catch (e) {
+    throw Exception("Error copying database: $e");
   }
+  // } else {
+  //   print("Database already exists at $path");
+  // }
 
   // Open the database
   return openDatabase(path);
