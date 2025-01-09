@@ -57,10 +57,12 @@ class _RegionDetailsState extends State<RegionDetails> {
   Future<List<Map<String, dynamic>>> fetchData() async {
     final db = await initializeDatabase();
     return await db.rawQuery('''
-      SELECT *, image_file_location AS image
-      FROM kakanin, provinces
-      WHERE kakanin.province_id = provinces.province_id 
-      AND kakanin.region_id = ?''', [widget.region['region_id']]);
+      SELECT *, image_file_location AS image 
+      FROM kakanin
+      LEFT JOIN regions ON kakanin.region_id = regions.region_id
+      LEFT JOIN provinces ON kakanin.province_id = provinces.province_id
+      LEFT JOIN municipalities ON kakanin.municipality_id = municipalities.municipality_id
+      WHERE kakanin.region_id = ?''', [widget.region['region_id']]);
   }
 
   Future<void> fetchDataFromDatabase() async {
