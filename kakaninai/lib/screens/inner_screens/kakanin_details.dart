@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kakaninai/widgets/titles_text.dart';
 
 class KakaninDetails extends StatelessWidget {
-  final Map<String, String> kakanin;
+  final Map<String, dynamic> kakanin;
 
   const KakaninDetails({
     super.key,
@@ -27,12 +27,12 @@ class KakaninDetails extends StatelessWidget {
               // Kakanin Image
               ClipRRect(
                 borderRadius: BorderRadius.circular(16),
-                child: Image.network(
-                  kakanin['image']!,
-                  height: size.height * 0.3,
-                  width: double.infinity,
-                  fit: BoxFit.cover,
-                ),
+                // child: Image.network(
+                //   kakanin['image']!,
+                //   height: size.height * 0.3,
+                //   width: double.infinity,
+                //   fit: BoxFit.cover,
+                // ),
               ),
               const SizedBox(height: 16),
               // Kakanin Name
@@ -46,7 +46,7 @@ class KakaninDetails extends StatelessWidget {
               const SizedBox(height: 8),
               // Origin
               Text(
-                '${kakanin['municipality']}, ${kakanin['province']}',
+                '${kakanin['municipality_name']}, ${kakanin['province_name']}',
                 style: const TextStyle(
                   fontSize: 16,
                   color: Colors.grey,
@@ -107,7 +107,7 @@ class KakaninDetails extends StatelessWidget {
                   ),
                   ListTile(
                     title: const Text('Cultural Bearer'),
-                    subtitle: Text(kakanin['cultural_bearer']!),
+                    subtitle: Text(kakanin['cultural_bearer_practitioner']!),
                   ),
                   ListTile(
                     title: const Text('Mode of Transmission'),
@@ -115,19 +115,19 @@ class KakaninDetails extends StatelessWidget {
                   ),
                   ListTile(
                     title: const Text('Cultural Significance (History)'),
-                    subtitle: Text(kakanin['cs_history']!),
+                    subtitle: Text(kakanin['cultural']!),
                   ),
                   ListTile(
                     title: const Text('Aesthetic Value'),
-                    subtitle: Text(kakanin['cs_aesthetic']!),
+                    subtitle: Text(kakanin['aesthetic']!),
                   ),
                   ListTile(
                     title: const Text('Social Significance'),
-                    subtitle: Text(kakanin['cs_social']!),
+                    subtitle: Text(kakanin['social']!),
                   ),
                   ListTile(
                     title: const Text('Spiritual Value'),
-                    subtitle: Text(kakanin['cs_spiritual']!),
+                    subtitle: Text(kakanin['spiritual']!),
                   ),
                 ],
               ),

@@ -3,7 +3,7 @@ import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:kakaninai/screens/inner_screens/kakanin_details.dart';
 
 class KakaninWidget extends StatelessWidget {
-  final Map<String, String> kakanin;
+  final Map<String, dynamic> kakanin;
 
   const KakaninWidget({
     super.key,
@@ -61,7 +61,7 @@ class KakaninWidget extends StatelessWidget {
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    kakanin['province']!,
+                    kakanin['province_name']!,
                     style: const TextStyle(
                       fontSize: 12,
                       color: Colors.grey,

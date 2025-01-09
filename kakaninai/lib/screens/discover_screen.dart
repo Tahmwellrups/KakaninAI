@@ -4,6 +4,29 @@ import 'package:kakaninai/widgets/app_name_text.dart';
 import 'package:kakaninai/widgets/kakanin/kakanin_widget.dart';
 import 'package:kakaninai/widgets/titles_text.dart';
 
+// SQL package
+import 'package:sqflite/sqflite.dart';
+import 'package:path/path.dart';
+
+Future<Database> initializeDatabase() async {
+  // Get the path to the database directory
+  final databasePath = await getDatabasesPath();
+  final path = join(databasePath, 'kakaninpedia.db');
+
+  return openDatabase(path);
+}
+
+Future<List<Map<String, dynamic>>> fetchData() async {
+  final db = await initializeDatabase();
+  return await db.rawQuery('''
+    SELECT * 
+    FROM kakanin
+    LEFT JOIN regions ON kakanin.region_id = regions.region_id
+    LEFT JOIN provinces ON kakanin.province_id = provinces.province_id
+    LEFT JOIN municipalities ON kakanin.municipality_id = municipalities.municipality_id
+    ''');
+}
+
 class DiscoverScreen extends StatefulWidget {
   const DiscoverScreen({super.key});
 
@@ -13,57 +36,20 @@ class DiscoverScreen extends StatefulWidget {
 
 class _DiscoverScreenState extends State<DiscoverScreen> {
   late TextEditingController searchController;
+  List<Map<String, dynamic>> kakaninList = [];
 
-  // Sample data for kakanin
-  final List<Map<String, String>> kakaninList = [
-    {
-      'region': 'Cordillera Administrative Region',
-      'province': 'Kalinga',
-      'municipality': 'Lubuagan',
-      'kakanin_class': 'Suman',
-      'kakanin_name': 'Ilanchila',
-      'geographical_location':
-          'Whole municipality of Lubuagan and the rest of the municipalities of the province of Kalinga',
-      'summary':
-          'Ilanchila (coined from the native terms silan, which means "like," and chila, which means "tongue," as it looks "like a tongue") is the most popular traditional snack served not only in Lubuagan but also in other municipalities of the province of Kalinga.',
-      'cultural_bearer':
-          'Some iLubuagen women usually aged 40 years old and above',
-      'mode_of_transmission':
-          'Through the demonstration of the women in the community which is observed by the young ones',
-      'cs_history':
-          'Ilanchila is a snack that is part of the Ilubuagen’s way of life since the past. It is greatly valued as the tastiest snack being utilized or served during the performance of almost all traditional rites in Lubuagan.',
-      'cs_aesthetic':
-          'The Ilanchila’s chewiness makes it tasty and the sweet and nutty flavor of the coconut milk and coconut milk curds make the snack irresistible.',
-      'cs_cultural': '',
-      'cs_social':
-          'The ilanchila is served as a snack during rites; thus, usually shared together with relatives, friends, and neighbors.',
-      'cs_spiritual':
-          'The ilanchila is being offered as a food provision for a recently buried dead.',
-      'cs_scientific': '',
-      'cs_socioEconomic': '',
-      'cs_socioPolitical': '',
-      'cs_economic': '',
-      'status':
-          'Always cooked during atod, sibit, umila and songot and even served nowadays in other occasions',
-      'constraints': '',
-      'safeguarding_measures':
-          'transmission, particularly through non-formal education, identification, documentation, research, promotion, enhancement',
-      'stories':
-          'Once upon a time, there was a woman named Alus. She wanted to get a byatok (tattoo) so she decided to visit mambyabyatok (tattooist) Asselegen in the village of Sumadel of the municipality of Tinglayan.',
-      'ingredients':
-          'Iyug (coconut), Takung Leaf (taktakkong), Wallay/Wallayan (white sticky rice)',
-      'procedure':
-          '1. Grate the coconut and extract the coconut milk. 2. Mix the coconut milk with the sticky rice. 3. Wrap the mixture in takung leaves. 4. Steam the wrapped mixture for 30 minutes. 5. Serve.',
-      'image':
-          'https://scontent.fmnl25-4.fna.fbcdn.net/v/t39.30808-6/227853265_4015658188546560_3182755794155100115_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeElGLWUgxuU-AFx_ceWW2VG-MIsWx3_46z4wixbHf_jrIRaAUT7h9Vz2qVmuU23_KpXE8xdAbd8-DcISR8NSixB&_nc_ohc=qbwPHisC2AkQ7kNvgHUtlDa&_nc_zt=23&_nc_ht=scontent.fmnl25-4.fna&_nc_gid=AnfaDpntg4j5jb5l7ugyTE3&oh=00_AYA0-hEDBgi3dEgYnFRVNHGRKI8q_0r28pqxxHyrpcgBoA&oe=6780107D',
-    },
-    // Add more items as needed
-  ];
+  Future<void> fetchDataFromDatabase() async {
+    final dbData = await fetchData(); // Call your fetchData function
+    setState(() {
+      kakaninList = dbData;
+    });
+  }
 
   @override
   void initState() {
     super.initState();
     searchController = TextEditingController();
+    fetchDataFromDatabase();
   }
 
   @override
