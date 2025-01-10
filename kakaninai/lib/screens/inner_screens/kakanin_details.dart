@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kakaninai/consts/app_colors.dart';
 import 'package:kakaninai/widgets/titles_text.dart';
 
 class KakaninDetails extends StatelessWidget {
@@ -15,7 +16,15 @@ class KakaninDetails extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(kakanin['kakanin_name']!),
+        title: Text(
+          kakanin['kakanin_name']!,
+          style: const TextStyle(
+            fontSize: 23,
+            color: AppColors.customOrange,
+            fontWeight: FontWeight.bold,
+            letterSpacing: 1.2,
+          ),
+        ),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -114,20 +123,165 @@ class KakaninDetails extends StatelessWidget {
                     subtitle: Text(kakanin['mode_of_transmission']!),
                   ),
                   ListTile(
-                    title: const Text('Cultural Significance (History)'),
-                    subtitle: Text(kakanin['cultural']!),
-                  ),
-                  ListTile(
-                    title: const Text('Aesthetic Value'),
-                    subtitle: Text(kakanin['aesthetic']!),
-                  ),
-                  ListTile(
-                    title: const Text('Social Significance'),
-                    subtitle: Text(kakanin['social']!),
-                  ),
-                  ListTile(
-                    title: const Text('Spiritual Value'),
-                    subtitle: Text(kakanin['spiritual']!),
+                    title: const Text('Cultural Significance'),
+                    subtitle: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        if (kakanin['history'] != null &&
+                            kakanin['history']!.isNotEmpty)
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 8.0),
+                            child: Text.rich(
+                              TextSpan(
+                                children: [
+                                  const TextSpan(
+                                    text: '• History: ',
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
+                                  ),
+                                  TextSpan(text: kakanin['history']),
+                                ],
+                              ),
+                            ),
+                          ),
+                        if (kakanin['aesthetic'] != null &&
+                            kakanin['aesthetic']!.isNotEmpty)
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 8.0),
+                            child: Text.rich(
+                              TextSpan(
+                                children: [
+                                  const TextSpan(
+                                    text: '• Aesthetic Value: ',
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
+                                  ),
+                                  TextSpan(text: kakanin['aesthetic']),
+                                ],
+                              ),
+                            ),
+                          ),
+                        if (kakanin['cultural'] != null &&
+                            kakanin['cultural']!.isNotEmpty)
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 8.0),
+                            child: Text.rich(
+                              TextSpan(
+                                children: [
+                                  const TextSpan(
+                                    text: '• Cultural Value: ',
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
+                                  ),
+                                  TextSpan(text: kakanin['cultural']),
+                                ],
+                              ),
+                            ),
+                          ),
+                        if (kakanin['social'] != null &&
+                            kakanin['social']!.isNotEmpty)
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 8.0),
+                            child: Text.rich(
+                              TextSpan(
+                                children: [
+                                  const TextSpan(
+                                    text: '• Social Significance: ',
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
+                                  ),
+                                  TextSpan(text: kakanin['social']),
+                                ],
+                              ),
+                            ),
+                          ),
+                        if (kakanin['spiritual'] != null &&
+                            kakanin['spiritual']!.isNotEmpty)
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 8.0),
+                            child: Text.rich(
+                              TextSpan(
+                                children: [
+                                  const TextSpan(
+                                    text: '• Spiritual Value: ',
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
+                                  ),
+                                  TextSpan(text: kakanin['spiritual']),
+                                ],
+                              ),
+                            ),
+                          ),
+                        if (kakanin['scientific'] != null &&
+                            kakanin['scientific']!.isNotEmpty)
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 8.0),
+                            child: Text.rich(
+                              TextSpan(
+                                children: [
+                                  const TextSpan(
+                                    text: '• Scientific Value: ',
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
+                                  ),
+                                  TextSpan(text: kakanin['scientific']),
+                                ],
+                              ),
+                            ),
+                          ),
+                        if (kakanin['socio_economic'] != null &&
+                            kakanin['socio_economic']!.isNotEmpty)
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 8.0),
+                            child: Text.rich(
+                              TextSpan(
+                                children: [
+                                  const TextSpan(
+                                    text: '• Socio-Economic Value: ',
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
+                                  ),
+                                  TextSpan(text: kakanin['socio_economic']),
+                                ],
+                              ),
+                            ),
+                          ),
+                        if (kakanin['socio_political'] != null &&
+                            kakanin['socio_political']!.isNotEmpty)
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 8.0),
+                            child: Text.rich(
+                              TextSpan(
+                                children: [
+                                  const TextSpan(
+                                    text: '• Socio-Political Value: ',
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
+                                  ),
+                                  TextSpan(text: kakanin['socio_political']),
+                                ],
+                              ),
+                            ),
+                          ),
+                        if (kakanin['economic'] != null &&
+                            kakanin['economic']!.isNotEmpty)
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 8.0),
+                            child: Text.rich(
+                              TextSpan(
+                                children: [
+                                  const TextSpan(
+                                    text: '• Economic Value: ',
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
+                                  ),
+                                  TextSpan(text: kakanin['economic']),
+                                ],
+                              ),
+                            ),
+                          ),
+                      ],
+                    ),
                   ),
                 ],
               ),

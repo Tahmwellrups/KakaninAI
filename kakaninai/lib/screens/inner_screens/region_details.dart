@@ -1,7 +1,6 @@
 import 'package:dynamic_height_grid_view/dynamic_height_grid_view.dart';
 import 'package:flutter/material.dart';
 import 'package:kakaninai/widgets/kakanin/kakanin_widget.dart';
-import 'package:kakaninai/screens/inner_screens/kakanin_details.dart';
 
 // SQL package
 import 'package:sqflite/sqflite.dart';
