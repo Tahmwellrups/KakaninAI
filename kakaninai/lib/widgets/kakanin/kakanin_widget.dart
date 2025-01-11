@@ -61,7 +61,7 @@ class KakaninWidget extends StatelessWidget {
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    kakanin['province_name']!,
+                    '${kakanin['province_name']}, ${kakanin['region_name']}',
                     style: const TextStyle(
                       fontSize: 12,
                       color: Colors.grey,
