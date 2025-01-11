@@ -17,7 +17,7 @@ class _RootScreenState extends State<RootScreen> {
   late PageController controller;
   int currentScreen = 0;
   List<Widget> screens = [
-    const HomeScreen(),
+    HomeScreen(),
     const DiscoverScreen(),
     const RegionsScreen(),
     const MoreScreen(),
