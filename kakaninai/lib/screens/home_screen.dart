@@ -43,35 +43,7 @@ class HomeScreen extends StatelessWidget {
             //     filled: true,
             //   ),
             // ),
-            const SizedBox(height: 16),
-            // Promo Banner
-            GestureDetector(
-              onTap: () {
-                // Add action for banner
-              },
-              child: Container(
-                width: double.infinity,
-                padding: const EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  color: Colors.orange.shade100,
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                child: const Row(
-                  children: [
-                    Icon(Icons.campaign, size: 28, color: Colors.orange),
-                    SizedBox(width: 12),
-                    Expanded(
-                      child: Text(
-                        "Check out our premium kakanin recipes! 🍡",
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.w600),
-                      ),
-                    ),
-                    Icon(Icons.arrow_forward_ios, size: 16),
-                  ],
-                ),
-              ),
-            ),
+
             const SizedBox(height: 16),
             // Get Started Cards
             const Text(
