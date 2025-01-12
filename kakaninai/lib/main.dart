@@ -21,10 +21,10 @@ class MyApp extends StatelessWidget {
       child: Consumer<ThemeProvider>(
         builder: (context, themeProvider, child) {
           return MaterialApp(
-            debugShowCheckedModeBanner: false, 
+            debugShowCheckedModeBanner: false,
             title: 'KakaninAI',
             theme: Styles.themeData(
-              isDarkTheme: themeProvider.darkTheme, context: context),
+                isDarkTheme: themeProvider.darkTheme, context: context),
             home: const RootScreen(),
             // routes: {
             //   KakaninDetails.routeName: (context) => const KakaninDetails(),
@@ -32,7 +32,6 @@ class MyApp extends StatelessWidget {
           );
         },
       ),
-   
     );
   }
 }

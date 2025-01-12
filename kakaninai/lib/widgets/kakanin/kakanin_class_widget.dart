@@ -39,7 +39,8 @@ class KakaninClassWidget extends StatelessWidget {
                 top: Radius.circular(10),
               ),
               child: FancyShimmerImage(
-                imageUrl: kakanin['image']!,
+                imageUrl:
+                    "https://themayakitchen.com/wp-content/uploads/2018/10/SAPIN-SAPIN-500x500.jpg",
                 height: size.height * 0.18,
                 boxFit: BoxFit.cover,
               ),
@@ -51,7 +52,7 @@ class KakaninClassWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    kakanin['kakanin_name']!,
+                    kakanin['kakanin_class_name']!,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
@@ -59,15 +60,8 @@ class KakaninClassWidget extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  const SizedBox(height: 4),
-                  Text(
-                    '${kakanin['province_name']}, ${kakanin['region_name']}',
-                    style: const TextStyle(
-                      fontSize: 12,
-                      color: Colors.grey,
-                    ),
-                  ),
-                  const SizedBox(height: 4),
+                  // const SizedBox(height: 4),
+                  // const SizedBox(height: 4),
                   // Text(
                   //   description,
                   //   maxLines: 2,

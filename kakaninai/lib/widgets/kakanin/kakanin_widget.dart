@@ -39,7 +39,8 @@ class KakaninWidget extends StatelessWidget {
                 top: Radius.circular(10),
               ),
               child: FancyShimmerImage(
-                imageUrl: kakanin['image']!,
+                imageUrl:
+                    "https://themayakitchen.com/wp-content/uploads/2018/10/SAPIN-SAPIN-500x500.jpg",
                 height: size.height * 0.18,
                 boxFit: BoxFit.cover,
               ),

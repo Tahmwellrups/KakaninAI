@@ -3,17 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:kakaninai/widgets/kakanin/kakanin_widget.dart';
 
 // // SQL package
-// import 'package:sqflite/sqflite.dart';
-// import 'package:path/path.dart';
+import 'package:sqflite/sqflite.dart';
+import 'package:path/path.dart';
 
-// Future<Database> initializeDatabase() async {
-//   // Get the path to the database directory
-//   final databasePath = await getDatabasesPath();
-//   final path = join(databasePath, 'kakaninpedia.db');
+Future<Database> initializeDatabase() async {
+  // Get the path to the database directory
+  final databasePath = await getDatabasesPath();
+  final path = join(databasePath, 'kakaninpedia.db');
 
-//   // Open the database
-//   return openDatabase(path);
-// }
+  // Open the database
+  return openDatabase(path);
+}
 
 class KakaninClassDetails extends StatefulWidget {
   final Map<String, dynamic> kakaninList;
@@ -27,38 +27,37 @@ class KakaninClassDetails extends StatefulWidget {
 class _KakaninClassDetailsState extends State<KakaninClassDetails> {
   List<Map<String, dynamic>> data = [];
 
-//   @override
-//   void initState() {
-//     super.initState();
-//     fetchDataFromDatabase();
-//   }
+  @override
+  void initState() {
+    super.initState();
+    fetchDataFromDatabase();
+  }
 
-//   Future<List<Map<String, dynamic>>> fetchData() async {
-//     final db = await initializeDatabase();
-//     return await db.rawQuery('''
-//         SELECT *, image_file_location AS image 
-//         FROM kakanin
-//         LEFT JOIN regions ON kakanin.region_id = regions.region_id
-//         LEFT JOIN provinces ON kakanin.province_id = provinces.province_id
-//         LEFT JOIN municipalities ON kakanin.municipality_id = municipalities.municipality_id
-//         WHERE kakanin.kakanin_class_id = ?
-//     ''', [widget.kakaninList['kakanin_class_id']]);
-//     }
+  Future<List<Map<String, dynamic>>> fetchData() async {
+    final db = await initializeDatabase();
+    return await db.rawQuery('''
+        SELECT *, image_file_location AS image 
+        FROM kakanin
+        LEFT JOIN regions ON kakanin.region_id = regions.region_id
+        LEFT JOIN provinces ON kakanin.province_id = provinces.province_id
+        LEFT JOIN municipalities ON kakanin.municipality_id = municipalities.municipality_id
+        WHERE kakanin.kakanin_class_id = ?
+    ''', [widget.kakaninList['kakanin_class_id']]);
+  }
 
-//   Future<void> fetchDataFromDatabase() async {
-//     final dbData = await fetchData(); // Call your fetchData function
-//     setState(() {
-//       data = dbData;
-//     });
-//   }
+  Future<void> fetchDataFromDatabase() async {
+    final dbData = await fetchData(); // Call your fetchData function
+    setState(() {
+      data = dbData;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.kakaninList['kakanin_name']!),
+        title: Text(widget.kakaninList['kakanin_class_name']!),
       ),
-      
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -67,7 +66,7 @@ class _KakaninClassDetailsState extends State<KakaninClassDetails> {
               child: DynamicHeightGridView(
                   builder: (context, index) {
                     return KakaninWidget(
-                      kakanin: widget.kakaninList,
+                      kakanin: data[index],
                     );
                   },
                   itemCount: data.length,

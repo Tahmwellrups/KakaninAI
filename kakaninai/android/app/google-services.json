@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "806970506812",
+    "project_id": "kakaninai",
+    "storage_bucket": "kakaninai.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:806970506812:android:00b5d3d7462e65b6708d39",
+        "android_client_info": {
+          "package_name": "com.kultoniyunjin.kakaninai"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRDk8qqxhAF1psRknV9KrxE8JhRLYUBQ4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

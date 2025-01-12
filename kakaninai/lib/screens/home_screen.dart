@@ -6,37 +6,69 @@ import 'package:kakaninai/widgets/header_widget.dart';
 import 'package:kakaninai/widgets/search_delegate.dart';
 
 import '../widgets/kakanin/kakanin_class_widget.dart';
+import 'package:sqflite/sqflite.dart';
+import 'package:path/path.dart';
+import 'package:flutter/services.dart' show rootBundle;
+import 'dart:io';
 
-class HomeScreen extends StatelessWidget {
-  HomeScreen({super.key});
+Future<Database> initializeDatabase() async {
+  // Get the path to the database directory
+  final databasePath = await getDatabasesPath();
+  final path = join(databasePath, 'kakaninpedia.db');
 
-  final List<Map<String, dynamic>> kakaninList = [
-    {
-      'kakanin_name': 'Bibingka',
-      'image':
-          'https://static01.nyt.com/images/2016/11/11/dining/COOKING-BIBINGKA1/COOKING-FILIPINO1-master768.jpg',
-      'municipality_name': 'Quezon City',
-      'province_name': 'Metro Manila',
-      'region_name': 'NCR',
-    },
-    {
-      'kakanin_name': 'Sapin-sapin',
-      'image':
-          'https://themayakitchen.com/wp-content/uploads/2018/10/SAPIN-SAPIN-500x500.jpg',
-      'municipality_name': 'Quezon City',
-      'province_name': 'Metro Manila',
-      'region_name': 'NCR',
-    },
-    {
-      'kakanin_name': 'Biko',
-      'image':
-          'https://www.seriouseats.com/thmb/W9cK95wrWNLlRtrxS3jqUWHonFs=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/20210617-biko-vicky-wasik-seriouseats-seriouseats-27-62f3c7854d1443dfbe36f1b29dc1dae5.jpg',
-      'municipality_name': 'Quezon City',
-      'province_name': 'Metro Manila',
-      'region_name': 'NCR',
-    },
-  ];
+  // Check if the database already exists
+  final exists = await databaseExists(path);
 
+  if (!exists) {
+    // Copy the database from assets to the writable location
+    try {
+      final data = await rootBundle.load('assets/kakaninpedia.db');
+      final bytes =
+          data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
+
+      // Write the database file
+      await File(path).writeAsBytes(bytes, flush: true);
+      print("Database copied to $path");
+    } catch (e) {
+      throw Exception("Error copying database: $e");
+    }
+  } else {
+    print("Database already exists at $path");
+  }
+
+  // Open the database
+  return openDatabase(path);
+}
+
+Future<List<Map<String, dynamic>>> fetchData() async {
+  final db = await initializeDatabase();
+  return await db.query('kakanin_class');
+}
+
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  List<Map<String, dynamic>> kakaninList = [];
+
+  @override
+  void initState() {
+    super.initState();
+    fetchDataFromDatabase();
+  }
+
+  Future<void> fetchDataFromDatabase() async {
+    final dbData = await fetchData(); // Call your fetchData function
+    setState(() {
+      kakaninList = dbData;
+    });
+  }
+
+  // final List<Map<String, dynamic>> kakaninList = [
   @override
   Widget build(BuildContext context) {
     return Scaffold(
