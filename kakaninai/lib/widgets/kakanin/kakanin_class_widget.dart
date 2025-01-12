@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
+import 'package:kakaninai/screens/inner_screens/kakanin_class_details.dart';
 
 class KakaninClassWidget extends StatelessWidget {
   final Map<String, dynamic> kakanin;
@@ -14,16 +15,16 @@ class KakaninClassWidget extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
 
     return GestureDetector(
-      // onTap: () {
-      //   Navigator.push(
-      //     context,
-      //     MaterialPageRoute(
-      //       builder: (context) => KakaninDetails(
-      //         kakanin: kakanin,
-      //       ),
-      //     ),
-      //   );
-      // },
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => KakaninClassDetails(
+              kakaninList: kakanin,
+            ),
+          ),
+        );
+      },
       child: Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
