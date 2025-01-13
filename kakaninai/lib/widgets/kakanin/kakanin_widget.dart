@@ -38,11 +38,23 @@ class KakaninWidget extends StatelessWidget {
               borderRadius: const BorderRadius.vertical(
                 top: Radius.circular(10),
               ),
-              child: FancyShimmerImage(
-                imageUrl:
-                    "https://themayakitchen.com/wp-content/uploads/2018/10/SAPIN-SAPIN-500x500.jpg",
+              child: Image.asset(
+                kakanin['image_file_location']!,
                 height: size.height * 0.18,
-                boxFit: BoxFit.cover,
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) {
+                  return Container(
+                    height: size.height * 0.18,
+                    color: Colors.grey,
+                    child: const Center(
+                      child: Icon(
+                        Icons.broken_image,
+                        color: Colors.white,
+                        size: 50,
+                      ),
+                    ),
+                  );
+                },
               ),
             ),
             // Product Details

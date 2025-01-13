@@ -64,6 +64,7 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
+    - assets/kakanin_images/
     - images/bibingka.jpg
     - images/puto.jpg
     - assets/kakaninpedia.db
