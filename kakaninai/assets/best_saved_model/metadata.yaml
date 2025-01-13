@@ -1,0 +1,119 @@
+description: Ultralytics YOLO11n model trained on KakaninAI-1/data.yaml
+author: Ultralytics
+date: '2025-01-13T11:14:17.033833'
+version: 8.3.59
+license: AGPL-3.0 License (https://ultralytics.com/license)
+docs: https://docs.ultralytics.com
+stride: 32
+task: detect
+batch: 1
+imgsz:
+- 640
+- 640
+names:
+  0: Antipolo Kalamay
+  1: Baguio Kalamay
+  2: Batangas Tamales
+  3: Baye-Baye
+  4: Bibingka Pancakes
+  5: Bibingka Pinipig
+  6: Bibingkang Galapong
+  7: Bibingkang Itlog
+  8: Bibingkang Lalaki
+  9: Bibingkang Malagkit
+  10: Bibingkang Tangway
+  11: Bibingkoy
+  12: Biko
+  13: Biko na Pirurutong
+  14: Bikong Navotas
+  15: Bilo-bilo
+  16: Binaki
+  17: Binallay
+  18: Binutong
+  19: Black Rice Suman
+  20: Boboto
+  21: Bohol Kalamay
+  22: Budbud Kabog
+  23: Buko Bibingka
+  24: Butsi
+  25: Candon Kalamay
+  26: Cassava Bibingka
+  27: Cassava Pudding
+  28: Cheesy Pichi-pichi
+  29: Dodol
+  30: Espasol
+  31: Halayang Kalabasa
+  32: Himugo
+  33: Inanchila
+  34: Inangit
+  35: Inatata
+  36: Inutak
+  37: Kalamay
+  38: Kalamay Buna
+  39: Kalamay Gabi
+  40: Kalamay Pinipig
+  41: Kalamay Ube
+  42: Kalamay sa Latik
+  43: Kamoteng Butse
+  44: Kulambo
+  45: Linutlut
+  46: Maja Blanca
+  47: Maja Buko Pandan
+  48: Maja Kalabasa
+  49: Maja de Ube
+  50: Masikoy
+  51: Matse
+  52: Muche
+  53: Nilupak na Camote
+  54: Nilupak na Saba
+  55: Nilupak na Ube
+  56: Palitaw
+  57: Palitaw Ube
+  58: Palitaw Yema
+  59: Palitaw sa Latik
+  60: Pandan Biko
+  61: Pasingaw
+  62: Pichi-pichi
+  63: Puso
+  64: Puto Anise
+  65: Puto Binan
+  66: Puto Bumbong
+  67: Puto Calasiao
+  68: Puto Cheese
+  69: Puto Flan
+  70: Puto Kutsinta
+  71: Puto Lanson
+  72: Puto Manapla
+  73: Puto Maya
+  74: Puto Pandan
+  75: Puto Pao
+  76: Puto Ube
+  77: Puto nga May Tuba
+  78: Putong Puti
+  79: Royal Bibingka
+  80: Salukara
+  81: Sapin Sapin
+  82: Sayongsong
+  83: Sinaluposop
+  84: Suman
+  85: Suman Cassava
+  86: Suman Maruecos
+  87: Suman Moron
+  88: Suman Pinipig
+  89: Suman na Mais
+  90: Suman sa Ibus
+  91: Suman sa Lihiya
+  92: Sumang Saba
+  93: Surigao Espasol
+  94: Tibok-tibok
+  95: Tikoy
+  96: Timtim
+  97: Tinubong
+  98: Tupig
+  99: Ube Biko
+  100: Ube Cheese Bibingka
+  101: Unday-unday
+args:
+  batch: 1
+  half: false
+  int8: false
