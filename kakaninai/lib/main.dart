@@ -26,9 +26,6 @@ class MyApp extends StatelessWidget {
             theme: Styles.themeData(
                 isDarkTheme: themeProvider.darkTheme, context: context),
             home: const RootScreen(),
-            // routes: {
-            //   KakaninDetails.routeName: (context) => const KakaninDetails(),
-            // },
           );
         },
       ),

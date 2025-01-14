@@ -4,6 +4,7 @@ import 'package:heroicons_flutter/heroicons_flutter.dart';
 import 'package:kakaninai/widgets/app_name_text.dart';
 import 'package:kakaninai/widgets/header_widget.dart';
 import 'package:kakaninai/widgets/search_delegate.dart';
+import 'package:tflite_flutter/tflite_flutter.dart';
 
 import '../widgets/kakanin/kakanin_class_widget.dart';
 import 'package:sqflite/sqflite.dart';
@@ -54,6 +55,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   List<Map<String, dynamic>> kakaninList = [];
+  late var interpreter;
 
   @override
   void initState() {
@@ -68,7 +70,6 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
-  // final List<Map<String, dynamic>> kakaninList = [
   @override
   Widget build(BuildContext context) {
     return Scaffold(

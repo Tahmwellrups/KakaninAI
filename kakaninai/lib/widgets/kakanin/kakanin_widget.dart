@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:kakaninai/screens/inner_screens/kakanin_details.dart';
 
 class KakaninWidget extends StatelessWidget {
